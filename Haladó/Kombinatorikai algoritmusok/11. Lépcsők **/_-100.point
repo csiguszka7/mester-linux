@@ -1,0 +1,22 @@
+// Source: https://usaco.guide/general/io
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	int n, k;
+	cin>>n>>k;
+	vector<int> a;
+	int osszeg=0;
+	for(int i=0;i<n;i++){
+		if(k>=i+1){
+			a.push_back(osszeg+1);
+			osszeg+=a[i];
+		}else{
+			osszeg-=a[i-k];
+			a.push_back(osszeg);
+			osszeg+=a[i];
+		}
+	}
+	cout<<a[n-1]<<'\n';
+}
